@@ -1,3 +1,5 @@
-pydantic
 google-generativeai
 python-dotenv
+pydantic
+yfinance
+requests

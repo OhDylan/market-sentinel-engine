@@ -26,10 +26,19 @@ def analyze_data(text: str) -> MarketReport:
         }
     )
     
+    from datetime import datetime
+    current_date = datetime.now().strftime("%Y-%m-%d")
+
     prompt = f"""
     You are a professional financial analyst. 
     Analyze the following raw text and extract structured market intelligence.
     Clean up any HTML tags or irrelevant noise (ads, etc.).
+    
+    Context Date: {current_date}
+    
+    If the text contains "No recent news" or similar, return an empty list for 'items'.
+    However, you MUST still populate 'timestamp', 'overall_sentiment', and 'key_takeaways' 
+    based on the available data (price, business summary, etc.).
     
     Raw Text:
     {text}
